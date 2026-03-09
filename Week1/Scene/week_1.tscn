@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cffs8r2ai6jx1"]
+
+[ext_resource type="Script" uid="uid://bphivkbwigtoq" path="res://Week1/Script/MapManager.gd" id="1_7rhpx"]
+[ext_resource type="Script" uid="uid://cfdayo8fr8872" path="res://Week1/Scene/World.gd" id="1_ctqi8"]
+[ext_resource type="Texture2D" uid="uid://6hiv6fnhic3r" path="res://Week1/Asset/Grid.png" id="1_qgu32"]
+[ext_resource type="Script" uid="uid://6h7i4v7vp457" path="res://Week1/Script/BeatManager.gd" id="2_t5ovv"]
+[ext_resource type="PackedScene" uid="uid://ibcwfekix1fs" path="res://Week1/Scene/player.tscn" id="3_xtpab"]
+[ext_resource type="AudioStream" uid="uid://bphlje4q000s5" path="res://Week1/Asset/431636__yellowtree__dw-kick-5.wav" id="4_nytx2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7rhpx"]
+texture = ExtResource("1_qgu32")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xtpab"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_7rhpx")
+
+[node name="Week1" type="Node2D" unique_id=191342032 node_paths=PackedStringArray("camera", "flash_rect", "player")]
+script = ExtResource("1_ctqi8")
+camera = NodePath("Player/Camera2D")
+flash_rect = NodePath("ColorRect")
+player = NodePath("Player")
+
+[node name="MapManager" type="Node" parent="." unique_id=912884524 node_paths=PackedStringArray("tilemap")]
+script = ExtResource("1_7rhpx")
+tilemap = NodePath("../TileMapLayer")
+
+[node name="BeatManager" type="Node" parent="." unique_id=415876813 node_paths=PackedStringArray("audio_player")]
+script = ExtResource("2_t5ovv")
+audio_player = NodePath("../Player/Drum")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=639542900]
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_xtpab")
+
+[node name="Player" parent="." unique_id=309592968 node_paths=PackedStringArray("map_manager", "beat_manager") instance=ExtResource("3_xtpab")]
+position = Vector2(32, 32)
+map_manager = NodePath("../MapManager")
+beat_manager = NodePath("../BeatManager")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1621692357]
+position = Vector2(-32, -32)
+
+[node name="Drum" type="AudioStreamPlayer2D" parent="Player" unique_id=2101543319]
+position = Vector2(-32, -32)
+stream = ExtResource("4_nytx2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=589213979]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(1, 0, 0, 0.23921569)
