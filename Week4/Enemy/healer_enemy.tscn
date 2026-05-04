@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://d1wpj4dmhu3wt"]
+
+[ext_resource type="Script" uid="uid://db7cqqqgqc6y7" path="res://Week4/Enemy/healer_enemy.gd" id="1_xb4dp"]
+[ext_resource type="Script" uid="uid://c8cmvojo1qw3y" path="res://Week4/Enemy/state_machine.gd" id="2_166e8"]
+[ext_resource type="Texture2D" uid="uid://rt8s73m5ap82" path="res://Week4/Assets/Enemy/Healer.png" id="2_jqyty"]
+[ext_resource type="Script" uid="uid://ckn8jve4qpm8a" path="res://Week4/Enemy/Healer/idle_state.gd" id="3_0pr2v"]
+[ext_resource type="Script" uid="uid://cov3wnbjswi5g" path="res://Week4/Enemy/heal_state.gd" id="4_yxm6n"]
+[ext_resource type="Texture2D" uid="uid://b6xbriktpd2ik" path="res://icon.svg" id="6_yxm6n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_166e8"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymtgg"]
+radius = 192.0
+
+[node name="HealerEnemy" type="CharacterBody2D" unique_id=1142759579 groups=["Enemies"]]
+script = ExtResource("1_xb4dp")
+metadata/_custom_type_script = "uid://c1o0o6smpatsw"
+
+[node name="StateMachine" type="Node" parent="." unique_id=662778899 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_166e8")
+initial_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=637139117 node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_0pr2v")
+enemy = NodePath("../..")
+
+[node name="HealState" type="Node" parent="StateMachine" unique_id=642584574 node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_yxm6n")
+enemy = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=797909902]
+texture = ExtResource("2_jqyty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1322319939]
+position = Vector2(0, 9.536743e-07)
+shape = SubResource("RectangleShape2D_166e8")
+
+[node name="HealArea" type="Area2D" parent="." unique_id=931621186]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealArea" unique_id=1507824914]
+shape = SubResource("CircleShape2D_ymtgg")
+debug_color = Color(0.32267833, 0.6248632, 0, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="HealArea" unique_id=1242021231]
+modulate = Color(0, 18.892157, 0, 0.22745098)
+scale = Vector2(3.3125, 3.3125)
+texture = ExtResource("6_yxm6n")

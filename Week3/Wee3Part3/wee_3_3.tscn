@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dy1u1povfyhy1"]
+
+[ext_resource type="Script" uid="uid://bsjnq0quwjq1h" path="res://Week3/Wee3Part3/wee_3_3.gd" id="1_jxysm"]
+
+[node name="wee3_3" type="Node2D" unique_id=1135420161]
+script = ExtResource("1_jxysm")
+
+[node name="TilePivot" type="Node2D" parent="." unique_id=515002597]
+position = Vector2(512, 256)

@@ -42,8 +42,7 @@ func _physics_process(delta: float) -> void:
 	
 	if direction == Vector2i.ZERO:
 		return
-	
-	# Kalau tekan di luar beat miss
+
 	if not beat_active:
 		handle_miss()
 		return

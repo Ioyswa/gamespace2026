@@ -77,7 +77,7 @@ func _on_stone_sword_pressed() -> void:
 		label_text += str(key) + " = " + str(stone_sword_data["ItemCrafting"][key]) + "\n"
 	$ColorRect/CraftingSection/ColorRect/Label.text = label_text
 
-
+		
 func _on_stone_armor_pressed() -> void:
 	item_selected = "StoneArmor"
 	var stone_armor_data = get_item_data("Armor", "StoneArmor")

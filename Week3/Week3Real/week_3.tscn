@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dwu05u5dqfg7w"]
+
+[ext_resource type="Script" uid="uid://xbgro7n7ugxa" path="res://Week3/Week3Real/week_3.gd" id="1_rguob"]
+[ext_resource type="PackedScene" uid="uid://57bmvd8tgsrt" path="res://Week3/Week3Real/bullet.tscn" id="2_k0vjk"]
+
+[node name="Week3" type="Node2D" unique_id=964912995]
+script = ExtResource("1_rguob")
+bullet_scene = ExtResource("2_k0vjk")

@@ -1,0 +1,7 @@
+extends Area2D
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == "Player" and body.has_method("hit_by_spike"):
+		body.hit_by_spike()

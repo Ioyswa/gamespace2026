@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://xms86ibrd4kb"]
+
+[ext_resource type="PackedScene" uid="uid://bl23csow4y2sx" path="res://Week4/Enemy/basic_enemy.tscn" id="1_e4s0o"]
+[ext_resource type="PackedScene" uid="uid://d1wpj4dmhu3wt" path="res://Week4/Enemy/healer_enemy.tscn" id="2_divd8"]
+[ext_resource type="PackedScene" uid="uid://ubs4hn42lmpk" path="res://Week4/Player/player.tscn" id="3_s1l4y"]
+
+[node name="World" type="Node2D" unique_id=954340949]
+
+[node name="BasicEnemy" parent="." unique_id=1142759579 instance=ExtResource("1_e4s0o")]
+
+[node name="HealerEnemy" parent="." unique_id=1024908914 instance=ExtResource("2_divd8")]
+position = Vector2(160, 24)
+
+[node name="Player" parent="." unique_id=1955767328 instance=ExtResource("3_s1l4y")]
+position = Vector2(72, 296)

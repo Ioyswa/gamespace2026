@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cqalwlgcdvot5"]
+
+[ext_resource type="Texture2D" uid="uid://b6xbriktpd2ik" path="res://icon.svg" id="1_lax8g"]
+[ext_resource type="Script" uid="uid://dwjteutx6r8m0" path="res://Week3/Player.gd" id="1_lgrwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgrwe"]
+size = Vector2(64, 64)
+
+[node name="Player" type="CharacterBody2D" unique_id=731264523]
+script = ExtResource("1_lgrwe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=75405026]
+shape = SubResource("RectangleShape2D_lgrwe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1809141853]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_lax8g")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=951944867]
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+offset_bottom = -37.0

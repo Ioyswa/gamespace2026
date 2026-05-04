@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://57bmvd8tgsrt"]
+
+[ext_resource type="Script" uid="uid://buwq4k5gtddxs" path="res://Week3/Week3Real/bullet.gd" id="1_j4y6o"]
+[ext_resource type="Texture2D" uid="uid://b6xbriktpd2ik" path="res://icon.svg" id="1_wslj0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wslj0"]
+size = Vector2(64, 64)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1983235262]
+script = ExtResource("1_j4y6o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1312897104]
+shape = SubResource("RectangleShape2D_wslj0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=159899055]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1.9073486e-06, 1.9073486e-06)
+scale = Vector2(0.49999997, 0.49999997)
+texture = ExtResource("1_wslj0")

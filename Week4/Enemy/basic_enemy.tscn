@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bl23csow4y2sx"]
+
+[ext_resource type="Script" uid="uid://d0k6k5h8tdijv" path="res://Week4/Enemy/basic_enemy.gd" id="1_j6k1c"]
+[ext_resource type="Script" uid="uid://c8cmvojo1qw3y" path="res://Week4/Enemy/state_machine.gd" id="2_ruq76"]
+[ext_resource type="Script" uid="uid://cttswbw5mxvoc" path="res://Week4/Enemy/Basic/idle_state.gd" id="3_lck82"]
+[ext_resource type="Script" uid="uid://c1cli40gsd1tf" path="res://Week4/Enemy/enemy_chase.gd" id="3_ruq76"]
+[ext_resource type="Texture2D" uid="uid://w0d4iy5lssh" path="res://Week4/Assets/Enemy/BasicEnemy.png" id="4_ruq76"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_166e8"]
+size = Vector2(64, 64)
+
+[node name="BasicEnemy" type="CharacterBody2D" unique_id=1142759579 groups=["Enemies"]]
+script = ExtResource("1_j6k1c")
+metadata/_custom_type_script = "uid://c1o0o6smpatsw"
+
+[node name="StateMachine" type="Node" parent="." unique_id=662778899 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_ruq76")
+initial_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=637139117 node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_lck82")
+enemy = NodePath("../..")
+
+[node name="HealState" type="Node" parent="StateMachine" unique_id=642584574]
+
+[node name="ChaseState" type="Node" parent="StateMachine" unique_id=25401618 node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_ruq76")
+enemy = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=797909902]
+texture = ExtResource("4_ruq76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1322319939]
+position = Vector2(0, 9.536743e-07)
+shape = SubResource("RectangleShape2D_166e8")
