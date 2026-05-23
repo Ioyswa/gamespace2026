@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://hdtnivron5lr"]
+
+[ext_resource type="Script" uid="uid://tlheujxvhgbo" path="res://Week5/world.gd" id="1_5kwtx"]
+
+[node name="World" type="Control" unique_id=1573862700]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5kwtx")
+
+[node name="Button" type="Button" parent="." unique_id=1613862510]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="." unique_id=1660555196]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "my live Leaderbaord dari wpg
+"
+
+[node name="LeaderboardLabel" type="RichTextLabel" parent="." unique_id=557553019]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -20.0
+offset_right = 320.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
