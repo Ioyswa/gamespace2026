@@ -1,14 +1,7 @@
 extends Control
 
 
-# Mengambil referensi node Blur yang posisinya sejajar di luar SettingContainer
 @onready var blur_bg = $"../Blur"
-
-
-
-var master_bus_index = AudioServer.get_bus_index("Master")
-var music_bus_index = AudioServer.get_bus_index("Music")
-var sfx_bus_index = AudioServer.get_bus_index("Sfx")
 
 var is_menu_open: bool = false
 var pos_tertutup: Vector2 = Vector2(-600, 144) 
@@ -33,10 +26,8 @@ func _on_setting_button_pressed() -> void:
 			blur_bg.show()
 			tween.tween_property(blur_bg, "modulate:a", 1.0, 0.4)
 			
-		# Animasikan posisi menu ke dalam layar
 		tween.tween_property(self, "position", pos_terbuka, 0.8)
 	else:
-		# Kembalikan posisi menu ke luar layar
 		tween.tween_property(self, "position", pos_tertutup, 0.4)
 		
 		if blur_bg:
@@ -57,10 +48,8 @@ func _on_close_button_pressed() -> void:
 			blur_bg.show()
 			tween.tween_property(blur_bg, "modulate:a", 1.0, 0.4)
 			
-		# Animasikan posisi menu ke dalam layar
 		tween.tween_property(self, "position", pos_terbuka, 0.4)
 	else:
-		# Kembalikan posisi menu ke luar layar
 		tween.tween_property(self, "position", pos_tertutup, 0.4)
 		
 		if blur_bg:
