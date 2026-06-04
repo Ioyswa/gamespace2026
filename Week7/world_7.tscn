@@ -1,0 +1,104 @@
+[gd_scene format=4 uid="uid://bra5mbw0oj0xy"]
+
+[ext_resource type="Script" uid="uid://cxwxcjr2nhiji" path="res://Week7/world_7.gd" id="1_kei1k"]
+[ext_resource type="Script" uid="uid://cwl5fwn1rqqhr" path="res://Week7/player.gd" id="2_if3eg"]
+[ext_resource type="Texture2D" uid="uid://b6xbriktpd2ik" path="res://icon.svg" id="2_kei1k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7mdw"]
+size = Vector2(64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2svsl"]
+texture = ExtResource("2_kei1k")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_kafoi"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_2svsl")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ja0i8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja0i8"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj0ug"]
+size = Vector2(128, 128)
+
+[node name="World7" type="Node2D" unique_id=1294143172]
+script = ExtResource("1_kei1k")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1737258739]
+position = Vector2(96, 608)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("2_if3eg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=730629565]
+shape = SubResource("RectangleShape2D_p7mdw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1739268088]
+scale = Vector2(0.49999997, 0.49999997)
+texture = ExtResource("2_kei1k")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1387358482]
+tile_map_data = PackedByteArray("AAAAAAoAAQAAAAAAAAABAAoAAQAAAAAAAAACAAoAAQAAAAAAAAADAAoAAQAAAAAAAAAEAAoAAQAAAAAAAAAFAAoAAQAAAAAAAAAGAAoAAQAAAAAAAAAHAAoAAQAAAAAAAAAIAAoAAQAAAAAAAAAJAAoAAQAAAAAAAAAKAAoAAQAAAAAAAAALAAoAAQAAAAAAAAAMAAoAAQAAAAAAAAANAAoAAQAAAAAAAAAOAAoAAQAAAAAAAAAPAAoAAQAAAAAAAAAQAAoAAQAAAAAAAAARAAoAAQAAAAAAAAASAAoAAQAAAAAAAAATAAoAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_kafoi")
+
+[node name="Objek" type="RigidBody2D" parent="." unique_id=732496171 groups=["Objek"]]
+position = Vector2(368, 504)
+physics_material_override = SubResource("PhysicsMaterial_ja0i8")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objek" unique_id=1797236399]
+shape = SubResource("RectangleShape2D_ja0i8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Objek" unique_id=230919009]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_kei1k")
+
+[node name="Pad" type="Area2D" parent="." unique_id=629101895]
+position = Vector2(-600, -248)
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pad" unique_id=804810853]
+position = Vector2(1216, 576)
+shape = SubResource("RectangleShape2D_hj0ug")
+
+[node name="ColorRect" type="ColorRect" parent="Pad/CollisionShape2D" unique_id=127773388]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(1, 1, 1, 0.48235294)
+
+[node name="Pad2" type="Area2D" parent="." unique_id=2084250338]
+position = Vector2(-656, 0)
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pad2" unique_id=12950521]
+position = Vector2(1216, 576)
+shape = SubResource("RectangleShape2D_hj0ug")
+
+[node name="ColorRect" type="ColorRect" parent="Pad2/CollisionShape2D" unique_id=444559238]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(1, 1, 1, 0.48235294)
+
+[connection signal="body_entered" from="Pad" to="." method="_on_pad_body_entered"]
+[connection signal="body_entered" from="Pad" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Pad2" to="." method="_on_pad_body_entered"]
+[connection signal="body_entered" from="Pad2" to="Player" method="_on_area_2d_body_entered"]
