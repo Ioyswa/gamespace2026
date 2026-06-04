@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://dxdydq7k5rn18"]
+
+[ext_resource type="Texture2D" uid="uid://b6xbriktpd2ik" path="res://icon.svg" id="2_2wv1v"]
+[ext_resource type="Script" uid="uid://c82cmy3cvp4g1" path="res://Week8/MainMenu/button.gd" id="3_ltq12"]
+[ext_resource type="Shader" uid="uid://cr1v17mhoqwsq" path="res://Week8/MainMenu/Setting/blur.gdshader" id="6_c0rjq"]
+[ext_resource type="Script" uid="uid://d3p1p7ah786nd" path="res://Week8/MainMenu/Setting/setting.gd" id="6_jn3pw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycpb7"]
+shader = ExtResource("6_c0rjq")
+shader_parameter/blur_amount = 1.6000000760000002
+shader_parameter/tint_color = Color(0, 0, 0, 0.5294118)
+
+[node name="MainMenu" type="Control" unique_id=1260897624]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonContainer" type="Control" parent="." unique_id=1432465267]
+anchors_preset = 0
+offset_left = 832.0
+offset_top = 384.0
+offset_right = 1136.0
+offset_bottom = 584.0
+script = ExtResource("3_ltq12")
+
+[node name="StartButton" type="TextureButton" parent="ButtonContainer" unique_id=408087589]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_bottom = 52.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+
+[node name="SettingButton" type="TextureButton" parent="ButtonContainer" unique_id=207122439]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -36.0
+offset_right = 11.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_2wv1v")
+stretch_mode = 0
+
+[node name="ExitButton" type="TextureButton" parent="ButtonContainer" unique_id=26965236]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -56.0
+offset_right = 34.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+
+[node name="Blur" type="ColorRect" parent="." unique_id=1199582602]
+visible = false
+material = SubResource("ShaderMaterial_ycpb7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingContainer" type="Control" parent="." unique_id=1219630167]
+anchors_preset = 0
+offset_top = 144.0
+offset_right = 520.0
+offset_bottom = 768.0
+script = ExtResource("6_jn3pw")
+
+[node name="Background" type="TextureRect" parent="SettingContainer" unique_id=208366354]
+layout_mode = 1
+offset_right = 519.0
+offset_bottom = 628.0
+texture = ExtResource("2_2wv1v")
+
+[node name="Icon" type="TextureRect" parent="SettingContainer" unique_id=221195930]
+visible = false
+layout_mode = 0
+offset_left = 304.0
+offset_top = 48.0
+offset_right = 457.0
+offset_bottom = 141.0
+texture = ExtResource("2_2wv1v")
+
+[node name="CloseButton" type="TextureButton" parent="SettingContainer" unique_id=715359017]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -196.0
+offset_top = -136.0
+offset_right = -67.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_2wv1v")
+
+[connection signal="pressed" from="ButtonContainer/SettingButton" to="SettingContainer" method="_on_setting_button_pressed"]
+[connection signal="pressed" from="SettingContainer/CloseButton" to="SettingContainer" method="_on_close_button_pressed"]
